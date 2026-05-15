@@ -46,7 +46,13 @@ export default function HomePage() {
   async function handleEmailSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise(r => setTimeout(r, 900));
+    try {
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name }),
+      });
+    } catch (_) {}
     setSubmitting(false);
     setStep("result");
   }
