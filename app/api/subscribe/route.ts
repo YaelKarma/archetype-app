@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    await fetch("https://ravmesser-new-api.ravpages.co.il/api", {
+    const res = await fetch("https://ravmesser-new-api.ravpages.co.il/api", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -21,8 +21,10 @@ export async function POST(req: NextRequest) {
         first_name: name ?? "",
       }),
     });
+    const text = await res.text();
+    console.log("Rav Masar status:", res.status, "body:", text);
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, ravStatus: res.status, ravBody: text });
   } catch (err) {
     console.error("Rav Masar error:", err);
     return NextResponse.json({ error: "Failed to subscribe" }, { status: 500 });
