@@ -228,10 +228,20 @@ export default function StarDiagram({ data, size = 460, dark = false }: Props) {
 
   const v = data;
 
+  const imgH = size * (1086 / 1448);
+  const imgY = (size - imgH) / 2;
+
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      {/* Vitruvian figure (behind everything) */}
-      <VitruvianFigure cx={cx} cy={cy} R={R} vA={vA} vB={vB} vC={vC} vD={vD} vE={vE} dark={dark} />
+      {/* Background figure image */}
+      {dark && (
+        <image href="/figure.png" x={0} y={imgY} width={size} height={imgH}
+          preserveAspectRatio="xMidYMid meet" opacity={0.95} />
+      )}
+      {/* Vitruvian figure (light mode only) */}
+      {!dark && (
+        <VitruvianFigure cx={cx} cy={cy} R={R} vA={vA} vB={vB} vC={vC} vD={vD} vE={vE} dark={dark} />
+      )}
 
       {/* Pentagram */}
       <path d={starPath} fill="none" stroke={GOLD} strokeWidth={1.8}

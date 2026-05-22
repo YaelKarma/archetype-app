@@ -115,7 +115,11 @@ export default function HomePage() {
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
-              <StarDiagram data={null} size={260} dark />
+              <img
+                src="/figure.png"
+                alt="archetype diagram"
+                style={{ width: 320, maxWidth: "100%", borderRadius: 16, opacity: 0.92 }}
+              />
             </div>
 
             <p style={{ textAlign: "center", fontSize: 13, color: MUTED, marginBottom: 22 }}>
