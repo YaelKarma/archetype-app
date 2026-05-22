@@ -42,12 +42,12 @@ function VitruvianFigure({ cx, cy, R, vA, vB, vC, vD, vE }: {
   const kneeL  = lerp({ x: cx - hipW * 0.55, y: crotchY }, vE, 0.52);
   const kneeR  = lerp({ x: cx + hipW * 0.55, y: crotchY }, vD, 0.52);
 
-  const INK = "#786551";
-  const SW  = 0.85;
+  const INK = "#7A6045";
+  const SW  = 1.0;
 
   return (
     <g stroke={INK} fill="none" strokeLinecap="round" strokeLinejoin="round"
-       strokeWidth={SW} opacity={0.30}>
+       strokeWidth={SW} opacity={0.38}>
 
       {/* Head */}
       <ellipse cx={cx} cy={hCy} rx={hR * 0.88} ry={hR} />
@@ -204,12 +204,12 @@ export default function StarDiagram({ data, size = 460 }: Props) {
   const pE_EA  = mid(vE, iEA);  const pEA_AB = mid(iEA, iAB);
   const pAB_B  = mid(iAB, vB);
 
-  const BROWN  = "#57483C";
-  const DARK   = "#2D1F14";
-  const GOLD   = "#CAA869";
-  const MUTED  = "#9a8272";
-  const CREAM  = "rgba(245,236,210,0.96)";
-  const CREAM2 = "rgba(243,232,205,0.92)";
+  const BROWN  = "#3A2A1A";
+  const DARK   = "#1A0E06";
+  const GOLD   = "#C8973A";
+  const MUTED  = "#8a7060";
+  const CREAM  = "rgba(248,238,215,0.97)";
+  const CREAM2 = "rgba(245,234,208,0.94)";
 
   const starPath = [vB, vD, vA, vC, vE]
     .map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ") + "Z";
@@ -222,8 +222,8 @@ export default function StarDiagram({ data, size = 460 }: Props) {
   const fsS = R * 0.066;
   const fsC = R * 0.098;
   // Ring radii
-  const rO = R * 0.130;
-  const rI = R * 0.092;
+  const rO = R * 0.138;
+  const rI = R * 0.090;
   const rC = R * 0.108;
 
   const v = data;
@@ -234,9 +234,9 @@ export default function StarDiagram({ data, size = 460 }: Props) {
       <VitruvianFigure cx={cx} cy={cy} R={R} vA={vA} vB={vB} vC={vC} vD={vD} vE={vE} />
 
       {/* Pentagram */}
-      <path d={starPath} fill="none" stroke={GOLD} strokeWidth={1.3}
-            strokeLinejoin="round" opacity={0.60} />
-      <path d={innerPath} fill="none" stroke={GOLD} strokeWidth={0.8} opacity={0.35} />
+      <path d={starPath} fill="none" stroke={GOLD} strokeWidth={1.8}
+            strokeLinejoin="round" opacity={0.80} />
+      <path d={innerPath} fill="none" stroke={GOLD} strokeWidth={1.0} opacity={0.45} />
 
       {/* Midpoints — plain numbers, no ring */}
       {([
@@ -270,7 +270,7 @@ export default function StarDiagram({ data, size = 460 }: Props) {
       ] as [P, number | null | undefined][]).map(([pos, val], i) => (
         <LabelNode key={i} x={pos.x} y={pos.y} value={val ?? null}
           fontSize={fsO} ring={rO} fill={CREAM}
-          ringColor={DARK} strokeWidth={2.2} textColor={DARK} />
+          ringColor={DARK} strokeWidth={3.0} textColor={DARK} />
       ))}
     </svg>
   );
