@@ -40,7 +40,7 @@ export default function HomePage() {
     if (!birthDate) return;
     const [year, month, day] = birthDate.split("-").map(Number);
     setStarData(calculate(day, month, year));
-    setStep("email");
+    setStep("result");
   }
 
   async function handleEmailSubmit(e: React.FormEvent) {
