@@ -42,12 +42,12 @@ function VitruvianFigure({ cx, cy, R, vA, vB, vC, vD, vE }: {
   const kneeL  = lerp({ x: cx - hipW * 0.55, y: crotchY }, vE, 0.52);
   const kneeR  = lerp({ x: cx + hipW * 0.55, y: crotchY }, vD, 0.52);
 
-  const INK = "#7A6045";
-  const SW  = 1.0;
+  const INK = "#6B4F30";
+  const SW  = 1.4;
 
   return (
     <g stroke={INK} fill="none" strokeLinecap="round" strokeLinejoin="round"
-       strokeWidth={SW} opacity={0.38}>
+       strokeWidth={SW} opacity={0.55}>
 
       {/* Head */}
       <ellipse cx={cx} cy={hCy} rx={hR * 0.88} ry={hR} />
@@ -147,7 +147,7 @@ function VitruvianFigure({ cx, cy, R, vA, vB, vC, vD, vE }: {
                   ${vD.x},${vD.y}`} />
 
       {/* Da Vinci circle */}
-      <circle cx={cx} cy={cy} r={R * 1.04} strokeDasharray="3,5" opacity={0.28} />
+      <circle cx={cx} cy={cy} r={R * 1.04} strokeDasharray="4,6" opacity={0.45} />
     </g>
   );
 }
