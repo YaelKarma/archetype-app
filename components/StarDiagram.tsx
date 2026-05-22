@@ -42,7 +42,7 @@ function VitruvianFigure({ cx, cy, R, vA, vB, vC, vD, vE }: {
   const kneeL  = lerp({ x: cx - hipW * 0.55, y: crotchY }, vE, 0.52);
   const kneeR  = lerp({ x: cx + hipW * 0.55, y: crotchY }, vD, 0.52);
 
-  const INK = "#6B4F30";
+  const INK = dark ? "#C8A878" : "#6B4F30";
   const SW  = 1.4;
 
   return (
@@ -180,9 +180,9 @@ function LabelNode({ x, y, value, fontSize, ring = 0, ringColor = "#786551",
   );
 }
 
-interface Props { data: StarData | null; size?: number; }
+interface Props { data: StarData | null; size?: number; dark?: boolean; }
 
-export default function StarDiagram({ data, size = 460 }: Props) {
+export default function StarDiagram({ data, size = 460, dark = false }: Props) {
   const cx = size / 2, cy = size / 2;
   const R  = size * 0.385;
   const ri = R * R_RATIO;
@@ -204,12 +204,12 @@ export default function StarDiagram({ data, size = 460 }: Props) {
   const pE_EA  = mid(vE, iEA);  const pEA_AB = mid(iEA, iAB);
   const pAB_B  = mid(iAB, vB);
 
-  const BROWN  = "#3A2A1A";
-  const DARK   = "#1A0E06";
+  const BROWN  = dark ? "#EDE0C4" : "#3A2A1A";
+  const DARK   = dark ? "#1A0F07" : "#1A0E06";
   const GOLD   = "#C8973A";
-  const MUTED  = "#8a7060";
-  const CREAM  = "rgba(248,238,215,0.97)";
-  const CREAM2 = "rgba(245,234,208,0.94)";
+  const MUTED  = dark ? "#9A8060" : "#8a7060";
+  const CREAM  = dark ? "rgba(26,15,7,0.95)"  : "rgba(248,238,215,0.97)";
+  const CREAM2 = dark ? "rgba(30,18,8,0.92)"  : "rgba(245,234,208,0.94)";
 
   const starPath = [vB, vD, vA, vC, vE]
     .map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ") + "Z";
