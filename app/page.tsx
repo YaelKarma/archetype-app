@@ -15,13 +15,14 @@ const CREAM2  = "#D4C4A0";
 const GOLD    = "#C8973A";
 const GOLD2   = "#E8C878";
 const BORDER  = "rgba(200,151,58,0.22)";
-const MUTED   = "#9A8060";
+const MUTED   = "#C8B490";
 
 const btnGold: React.CSSProperties = {
-  width: "100%", padding: "14px 0", borderRadius: 50, border: "none",
-  background: `linear-gradient(135deg, #C8973A, #E8C878, #C8973A)`,
-  color: BG, fontWeight: 800, fontSize: 14, cursor: "pointer",
+  width: "100%", padding: "16px 0", borderRadius: 50, border: "none",
+  background: `linear-gradient(135deg, #C8973A, #F0D080, #C8973A)`,
+  color: "#1A0F07", fontWeight: 800, fontSize: 15, cursor: "pointer",
   fontFamily: "var(--font-montserrat), sans-serif", letterSpacing: 1.5,
+  boxShadow: "0 4px 20px rgba(200,151,58,0.35)",
   transition: "opacity 0.2s",
 };
 const btnOutline: React.CSSProperties = {
@@ -105,7 +106,7 @@ export default function HomePage() {
                 background: `linear-gradient(to right, transparent, ${GOLD}, transparent)`,
                 margin: "0 auto 16px",
               }} />
-              <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.9, direction: "rtl" }}>
+              <p style={{ fontSize: 15, color: MUTED, lineHeight: 1.9, direction: "rtl" }}>
                 {isHe
                   ? <>מערכת קוגניטיבית-התנהגותית מבוססת ארכיטיפים<br />לזיהוי ושינוי דפוסי חשיבה והתנהגות</>
                   : <>A cognitive-behavioral system based on archetypes<br />for identifying and transforming patterns of thought and behavior</>
@@ -133,7 +134,7 @@ export default function HomePage() {
               </div>
               <button type="submit" disabled={!birthDate}
                 style={{ ...btnGold, opacity: birthDate ? 1 : 0.4, cursor: birthDate ? "pointer" : "not-allowed" }}>
-                {isHe ? "חשבי את הארכיטיפ שלי" : "Calculate My Archetype"}
+                {isHe ? "חשבי את הארכיטיפים שלי" : "Calculate My Archetype"}
               </button>
             </form>
 
