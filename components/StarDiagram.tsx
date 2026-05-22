@@ -19,9 +19,9 @@ const R_RATIO = 1 / PHI_SQ;
 type P = { x: number; y: number };
 
 // ─── Vitruvian figure ────────────────────────────────────────
-function VitruvianFigure({ cx, cy, R, vA, vB, vC, vD, vE }: {
+function VitruvianFigure({ cx, cy, R, vA, vB, vC, vD, vE, dark = false }: {
   cx: number; cy: number; R: number;
-  vA: P; vB: P; vC: P; vD: P; vE: P;
+  vA: P; vB: P; vC: P; vD: P; vE: P; dark?: boolean;
 }) {
   const h      = R * 0.226;
   const hR     = h * 0.50;
@@ -205,11 +205,11 @@ export default function StarDiagram({ data, size = 460, dark = false }: Props) {
   const pAB_B  = mid(iAB, vB);
 
   const BROWN  = dark ? "#EDE0C4" : "#3A2A1A";
-  const DARK   = dark ? "#1A0F07" : "#1A0E06";
-  const GOLD   = "#C8973A";
-  const MUTED  = dark ? "#9A8060" : "#8a7060";
-  const CREAM  = dark ? "rgba(26,15,7,0.95)"  : "rgba(248,238,215,0.97)";
-  const CREAM2 = dark ? "rgba(30,18,8,0.92)"  : "rgba(245,234,208,0.94)";
+  const DARK   = dark ? "#EDE0C4" : "#1A0E06";
+  const GOLD   = dark ? "#E8C878" : "#C8973A";
+  const MUTED  = dark ? "#B09070" : "#8a7060";
+  const CREAM  = dark ? "rgba(26,15,7,0.97)"  : "rgba(248,238,215,0.97)";
+  const CREAM2 = dark ? "rgba(30,18,8,0.95)"  : "rgba(245,234,208,0.94)";
 
   const starPath = [vB, vD, vA, vC, vE]
     .map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ") + "Z";
@@ -231,7 +231,7 @@ export default function StarDiagram({ data, size = 460, dark = false }: Props) {
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
       {/* Vitruvian figure (behind everything) */}
-      <VitruvianFigure cx={cx} cy={cy} R={R} vA={vA} vB={vB} vC={vC} vD={vD} vE={vE} />
+      <VitruvianFigure cx={cx} cy={cy} R={R} vA={vA} vB={vB} vC={vC} vD={vD} vE={vE} dark={dark} />
 
       {/* Pentagram */}
       <path d={starPath} fill="none" stroke={GOLD} strokeWidth={1.8}
@@ -264,13 +264,14 @@ export default function StarDiagram({ data, size = 460, dark = false }: Props) {
         fontSize={fsC} ring={rC} fill={CREAM2}
         ringColor={DARK} strokeWidth={1.8} textColor={BROWN} />
 
-      {/* Outer vertices — large cream circles with thick dark border */}
+      {/* Outer vertices — large circles with thick border */}
       {([
         [vA, v?.A], [vB, v?.B], [vC, v?.C], [vD, v?.D], [vE, v?.E],
       ] as [P, number | null | undefined][]).map(([pos, val], i) => (
         <LabelNode key={i} x={pos.x} y={pos.y} value={val ?? null}
           fontSize={fsO} ring={rO} fill={CREAM}
-          ringColor={DARK} strokeWidth={3.0} textColor={DARK} />
+          ringColor={dark ? GOLD : "#1A0E06"} strokeWidth={3.0}
+          textColor={dark ? "#EDE0C4" : "#1A0E06"} />
       ))}
     </svg>
   );
