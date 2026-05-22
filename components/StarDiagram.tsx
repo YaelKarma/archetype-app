@@ -42,12 +42,12 @@ function VitruvianFigure({ cx, cy, R, vA, vB, vC, vD, vE, dark = false }: {
   const kneeL  = lerp({ x: cx - hipW * 0.55, y: crotchY }, vE, 0.52);
   const kneeR  = lerp({ x: cx + hipW * 0.55, y: crotchY }, vD, 0.52);
 
-  const INK = dark ? "#C8A878" : "#6B4F30";
-  const SW  = 1.4;
+  const INK = dark ? "#E0C898" : "#6B4F30";
+  const SW  = dark ? 1.8 : 1.4;
 
   return (
     <g stroke={INK} fill="none" strokeLinecap="round" strokeLinejoin="round"
-       strokeWidth={SW} opacity={0.55}>
+       strokeWidth={SW} opacity={dark ? 0.70 : 0.55}>
 
       {/* Head */}
       <ellipse cx={cx} cy={hCy} rx={hR * 0.88} ry={hR} />
