@@ -171,15 +171,7 @@ export default function HomePage() {
               </div>
             )}
 
-            <div style={{ position: "relative", display: "flex", justifyContent: "center", marginBottom: 28 }}>
-              <div style={{
-                position: "absolute", inset: 0,
-                backgroundImage: "url('/figure.png')",
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                opacity: 0.55,
-              }} />
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
               <StarDiagram data={starData} size={380} dark />
             </div>
 
