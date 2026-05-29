@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import StarDiagram from "@/components/StarDiagram";
+import FigureDiagram from "@/components/FigureDiagram";
 import DateInput from "@/components/DateInput";
 import { calculate, type StarData } from "@/lib/calculate";
 import { getArchetype } from "@/lib/archetypes";
@@ -114,9 +114,8 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
-              <img src="/figure.png" alt="archetype diagram"
-                style={{ width: "100%", maxWidth: 400, borderRadius: 12 }} />
+            <div style={{ marginBottom: 32 }}>
+              <FigureDiagram data={null} maxWidth={400} />
             </div>
 
             <p style={{ textAlign: "center", fontSize: 13, color: MUTED, marginBottom: 22 }}>
@@ -171,8 +170,8 @@ export default function HomePage() {
               </div>
             )}
 
-            <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
-              <StarDiagram data={starData} size={380} dark />
+            <div style={{ marginBottom: 28 }}>
+              <FigureDiagram data={starData} maxWidth={480} />
             </div>
 
             {/* Main archetype card */}
